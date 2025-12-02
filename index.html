@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade | Web Developer & Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        surface: '#171717',
+                        surfaceHighlight: '#262626',
+                        primary: '#3b82f6', // Blue accent
+                        secondary: '#a855f7', // Purple accent
+                        textMain: '#ededed',
+                        textMuted: '#a3a3a3',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: #0a0a0a;
+            color: #ededed;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Custom style for the floating image preview on hover */
+        .project-preview {
+            transition: opacity 0.3s ease; 
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            aspect-ratio: 16 / 10;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter">
+                Jadenttp<span class="text-primary">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-sm font-medium text-textMuted hover:text-white transition-colors">About</a>
+                <a href="#projects" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Work</a>
+                <a href="#archive" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Archive</a>
+                <a href="#services" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Services</a>
+                <a href="#blog" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Blog</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/5 text-xs text-textMuted font-mono">
+                    <i data-lucide="clock" class="w-3 h-3"></i>
+                    <span id="time-display">--:--:-- GMT+7</span>
+                </div>
+                <a href="#contact" class="px-5 py-2 bg-white text-black font-semibold rounded-full text-sm hover:bg-gray-200 transition-colors">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-secondary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-primary text-sm font-medium mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Available for new projects
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
+                    Hi, I'm Jade. <br/>
+                    <span class="gradient-text">Web Developer.</span>
+                </h1>
+                <p class="text-xl text-textMuted mb-8 max-w-2xl leading-relaxed">
+                    Crafting website solutions that drive user engagement. I build pixel-perfect, performant websites tailored to your business needs in Thailand and beyond.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#services" class="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all">
+                        View Services
+                    </a>
+                    <a href="#projects" class="px-8 py-3 bg-surface border border-white/10 hover:bg-surfaceHighlight text-white font-semibold rounded-full transition-all flex items-center gap-2">
+                        View Work <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-white/10 pt-10">
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-1">6+</h3>
+                    <p class="text-textMuted text-sm">Years of Experience</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-1">40+</h3>
+                    <p class="text-textMuted text-sm">Projects Completed</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-1">7+</h3>
+                    <p class="text-textMuted text-sm">Technologies Mastered</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-1">100%</h3>
+                    <p class="text-textMuted text-sm">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee / Brand Logos -->
+    <div class="w-full bg-surface border-y border-white/5 py-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto relative">
+             <div class="flex gap-12 animate-marquee whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
+                <!-- Repeated items for smooth loop -->
+                <span class="text-xl font-bold">Honda</span>
+                <span class="text-xl font-bold">Singha</span>
+                <span class="text-xl font-bold">Topcharoen</span>
+                <span class="text-xl font-bold">MG Cars</span>
+                <span class="text-xl font-bold">Pruksa</span>
+                <span class="text-xl font-bold">Nestle</span>
+                <span class="text-xl font-bold">CPN Office</span>
+                <span class="text-xl font-bold">Clinixir</span>
+                <span class="text-xl font-bold">Honda</span>
+                <span class="text-xl font-bold">Singha</span>
+                <span class="text-xl font-bold">Topcharoen</span>
+                <span class="text-xl font-bold">MG Cars</span>
+                <span class="text-xl font-bold">Pruksa</span>
+                <span class="text-xl font-bold">Nestle</span>
+                <span class="text-xl font-bold">CPN Office</span>
+                <span class="text-xl font-bold">Clinixir</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Selected Works Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Selected Works</h2>
+                    <p class="text-textMuted">A selection of projects I've collaborated on.</p>
+                </div>
+                <a href="#archive" class="text-sm font-medium border-b border-white pb-1 mt-4 md:mt-0">View all projects</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Card 1 -->
+                <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Honda</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Honda</h3>
+                        <p class="text-sm text-textMuted mb-4">Team Collaborator</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Dev</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Auto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-yellow-900/40 to-yellow-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Singha</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Singha</h3>
+                        <p class="text-sm text-textMuted mb-4">Team Collaborator</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Frontend</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Bev</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Project Card 3 -->
+                <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-900/40 to-blue-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Topcharoen</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Topcharoen</h3>
+                        <p class="text-sm text-textMuted mb-4">Team Collaborator</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Commerce</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 4 -->
+                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-900/40 to-red-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Amazing Thailand</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Amazing Thailand x HSH</h3>
+                        <p class="text-sm text-textMuted mb-4">Website Initiator</p>
+                         <div class="flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Tourism</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Lead</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">CPN Office</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">CPN Office</h3>
+                        <p class="text-sm text-textMuted mb-4">Website Initiator</p>
+                         <div class="flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Corporate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More projects placeholder link -->
+                <div class="flex flex-col items-center justify-center bg-surfaceHighlight/30 border border-white/5 rounded-2xl p-6 border-dashed">
+                    <div class="text-center">
+                        <h3 class="text-xl font-semibold mb-2">Many More</h3>
+                        <p class="text-sm text-textMuted mb-4">Click below to view the full archive.</p>
+                        <a href="#archive" class="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                            View Full Archive <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archive Page -->
+    <section id="archive" class="py-20 px-6 bg-surface/30">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4">Project Archive</h2>
+            <p class="text-textMuted mb-12">A comprehensive list of all past web development projects and collaborations. Hover over a project to see a quick visual preview.</p>
+
+            <!-- Table Header -->
+            <div class="hidden md:grid grid-cols-6 gap-4 border-b border-white/10 pb-3 mb-4 text-xs font-semibold uppercase tracking-wider text-textMuted">
+                <span class="col-span-3">Client</span>
+                <span class="col-span-2">Role</span>
+                <span class="col-span-1 text-right">Category</span>
+            </div>
+
+            <!-- Project List (Using grid structure for responsiveness) -->
+            <div class="space-y-4">
+                
+                <!-- Project 1 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/3b82f6/ffffff?text=Honda+Motors" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Honda</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Automotive, Dev</span>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/a855f7/ffffff?text=Singha+Campaign" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Singha</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Beverage, Frontend</span>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/404040/ffffff?text=Topcharoen+E-comm" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Topcharoen</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">E-commerce, Retail</span>
+                </a>
+                
+                <!-- Project 4 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/f87171/ffffff?text=MG+Cars+Homepage" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">MG Cars</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Automotive, Frontend</span>
+                </a>
+
+                <!-- Project 5 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/10b981/ffffff?text=Pruksa+Real+Estate" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Pruksa</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Real Estate, Marketing</span>
+                </a>
+
+                <!-- Project 6 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/93c5fd/ffffff?text=KTB+Landing+Page" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">KTB Campaign</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Banking, Campaign</span>
+                </a>
+
+                <!-- Project 7 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/f97316/ffffff?text=Purefilter+Shop" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Purefilter</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">E-commerce, Lead</span>
+                </a>
+
+                <!-- Project 8 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/ef4444/ffffff?text=Nestle+Marketing" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Nestle</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">FMCG, Marketing</span>
+                </a>
+
+                <!-- Project 9 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/374151/ffffff?text=CPN+Office+Site" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">CPN Office</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Lead</span>
+                </a>
+
+                <!-- Project 10 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/99f6e4/000000?text=Amazing+Thailand" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Amazing Thailand x HSH</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Tourism, Lead</span>
+                </a>
+
+                <!-- Project 11 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/fcd34d/000000?text=Driessen+Catering" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Driessen Catering</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Food Service, Lead</span>
+                </a>
+
+                <!-- Project 12 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/9ca3af/ffffff?text=SMT+Asia+Corporate" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">SMT Asia</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Dev</span>
+                </a>
+
+                <!-- Project 13 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/60a5fa/ffffff?text=LawtonAsia+Finance" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">LawtonAsia</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Finance, Lead</span>
+                </a>
+
+                <!-- Project 14 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/d8b4fe/000000?text=Clinixir+Healthcare" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Clinixir</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Healthcare, Lead</span>
+                </a>
+
+                <!-- Project 15 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/fca5a5/000000?text=PKF+Consulting" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">PKF</span>
+                    <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Finance, Corporate</span>
+                </a>
+
+                <!-- Project 16 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/06b6d4/ffffff?text=Raith+Rovers+Sports" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">Raith Rovers</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Sports, Frontend</span>
+                </a>
+
+                <!-- Project 17 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/92400e/ffffff?text=AustCham+Event" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">AustCham Thailand</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Event</span>
+                </a>
+
+                <!-- Project 18 -->
+                <a href="#" data-image-url="https://placehold.co/320x200/1e40af/ffffff?text=British+Club+BKK" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                    <span class="text-white font-medium col-span-3">British Club BKK</span>
+                    <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Event</span>
+                </a>
+
+            </div>
+
+             <div class="mt-12 text-center">
+                 <a href="#projects" class="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                    <i data-lucide="arrow-up" class="w-4 h-4 mr-1"></i> Back to Selected Works
+                </a>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- Services / Pricing Section -->
+    <section id="services" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Transparent Pricing</h2>
+                <p class="text-textMuted max-w-2xl mx-auto">Choose the perfect plan for your business. No hidden fees.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Basic Plan -->
+                <div class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold">Basic Plan</h3>
+                        <p class="text-xs text-textMuted mt-1">Perfect for personal projects</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-3xl font-bold">฿15,000</span>
+                        <span class="text-textMuted text-sm">/one-time</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Single-page website</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Responsive Design</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Domain & Hosting incl.</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 1 Month Maintenance</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select Plan</a>
+                </div>
+
+                <!-- Standard Plan -->
+                <div class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold">Standard Plan</h3>
+                        <p class="text-xs text-textMuted mt-1">Ideal for small businesses</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-3xl font-bold">฿30,000</span>
+                        <span class="text-textMuted text-sm">/year</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Up to 5 pages</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Basic SEO</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Contact Form</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 1 Year Maintenance</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select Plan</a>
+                </div>
+
+                <!-- Professional Plan (Featured) -->
+                <div class="p-8 rounded-3xl bg-surfaceHighlight border border-primary/30 flex flex-col relative overflow-hidden shadow-2xl shadow-primary/10">
+                    <div class="absolute top-0 right-0 bg-primary text-white text-[10px] px-3 py-1 rounded-bl-xl font-bold uppercase tracking-wider">Popular</div>
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold text-white">Professional</h3>
+                        <p class="text-xs text-textMuted mt-1">Great for corporates</p>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex items-baseline gap-2">
+                             <span class="text-3xl font-bold">฿50,000</span>
+                             <span class="text-sm text-textMuted line-through">฿70k</span>
+                        </div>
+                        <span class="text-textMuted text-sm">/year</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Up to 10 pages</li>
+                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Advanced SEO</li>
+                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 3 Revisions</li>
+                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 1 Year Maintenance</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg bg-primary text-white text-center text-sm font-medium hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25">Select Plan</a>
+                </div>
+
+                <!-- E-Commerce Plan -->
+                <div class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold">E-commerce</h3>
+                        <p class="text-xs text-textMuted mt-1">For online stores</p>
+                    </div>
+                    <div class="mb-6">
+                         <div class="flex items-baseline gap-2">
+                             <span class="text-3xl font-bold">฿90,000</span>
+                             <span class="text-sm text-textMuted line-through">฿120k</span>
+                        </div>
+                        <span class="text-textMuted text-sm">/year</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Up to 20 pages</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> E-commerce Ready</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Advanced SEO</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 1 Year Maintenance</li>
+                    </ul>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 px-6 bg-background">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Latest Insights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog 1 -->
+                <article class="group cursor-pointer">
+                    <div class="h-48 rounded-2xl bg-surfaceHighlight border border-white/5 mb-4 overflow-hidden relative">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                         <div class="absolute bottom-4 left-4">
+                             <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded font-medium">Tech</span>
+                         </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Static vs. Dynamic Websites: Which One Fits?</h3>
+                    <p class="text-textMuted text-sm line-clamp-2">Understanding the core differences between site architectures to make the best decision for your business needs.</p>
+                </article>
+
+                 <!-- Blog 2 -->
+                <article class="group cursor-pointer">
+                    <div class="h-48 rounded-2xl bg-surfaceHighlight border border-white/5 mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                         <div class="absolute bottom-4 left-4">
+                             <span class="px-2 py-1 bg-secondary/20 text-secondary text-xs rounded font-medium">Design</span>
+                         </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Why Mobile First Design Is Critical</h3>
+                    <p class="text-textMuted text-sm line-clamp-2">With mobile traffic overtaking desktop, learn why prioritizing smaller screens boosts conversions.</p>
+                </article>
+
+                 <!-- Blog 3 -->
+                <article class="group cursor-pointer">
+                    <div class="h-48 rounded-2xl bg-surfaceHighlight border border-white/5 mb-4 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                         <div class="absolute bottom-4 left-4">
+                             <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded font-medium">SEO</span>
+                         </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">How to Set Up Google Business Profile</h3>
+                    <p class="text-textMuted text-sm line-clamp-2">A step-by-step guide to mastering local SEO and getting found by customers in your area.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer id="contact" class="border-t border-white/10 bg-surface/20 pt-20 pb-10 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to start?</h2>
+            <p class="text-textMuted max-w-xl mx-auto mb-10 text-lg">Let's turn your vision into a high-performing website. Book a call today for a free consultation.</p>
+            
+            <a href="mailto:contact@jadenttp.work" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:scale-105 transition-transform">
+                <i data-lucide="mail"></i> Get in Touch
+            </a>
+
+            <div class="flex justify-center gap-6 mt-16 mb-16">
+                 <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
+                 <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="github"></i></a>
+                 <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="twitter"></i></a>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-textMuted border-t border-white/5 pt-8">
+                <p>&copy; 2025 Jadenttp. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy</a>
+                    <a href="#" class="hover:text-white">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GLOBAL IMAGE PREVIEW CONTAINER -->
+    <!-- This div is hidden by default and dynamically positioned/shown on archive link hover -->
+    <div id="image-preview" class="project-preview fixed top-0 left-0 w-80 h-auto rounded-xl overflow-hidden shadow-2xl z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+        <img id="preview-image" src="" alt="Project Preview" class="w-full h-full object-cover">
+        <!-- Optional light frosted effect -->
+        <div class="absolute inset-0 bg-black/10 backdrop-blur-[1px]"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Live Clock (Thailand Time GMT+7)
+        function updateTime() {
+            const options = { 
+                timeZone: 'Asia/Bangkok', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: false 
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const timeString = formatter.format(new Date());
+            document.getElementById('time-display').textContent = `${timeString} GMT+7`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // Project Image Preview on Hover Logic
+        const archiveLinks = document.querySelectorAll('#archive a');
+        const previewContainer = document.getElementById('image-preview');
+        const previewImage = document.getElementById('preview-image');
+        const previewWidth = 320; 
+        const previewHeight = 200; 
+        const margin = 30; // Horizontal margin from cursor
+
+        // Function to update the position of the preview container
+        function updatePreviewPosition(e) {
+            // Determine side for placement (check if placing right would overflow)
+            const placeRight = e.clientX + previewWidth + margin < window.innerWidth;
+            
+            // Calculate X position
+            let x = placeRight 
+                ? e.clientX + margin // Place to the right of the cursor
+                : e.clientX - previewWidth - margin; // Place to the left of the cursor
+
+            // Calculate Y position (vertically centered relative to cursor)
+            let y = e.clientY - (previewHeight / 2); 
+
+            // Boundary Checks (Keep image on screen)
+            if (y < 10) { y = 10; } // Prevent overflow on top
+            if (y + previewHeight + 10 > window.innerHeight) { 
+                y = window.innerHeight - previewHeight - 10; // Prevent overflow on bottom
+            }
+
+            // Apply position using translate for smooth performance
+            previewContainer.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        archiveLinks.forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                const imageUrl = link.getAttribute('data-image-url');
+                if (imageUrl) {
+                    previewImage.src = imageUrl;
+                    // Immediately position the image before showing it
+                    updatePreviewPosition(e); 
+                    previewContainer.style.opacity = '1';
+                }
+            });
+
+            link.addEventListener('mouseleave', () => {
+                previewContainer.style.opacity = '0';
+                // Clear source after transition delay
+                setTimeout(() => { previewImage.src = ''; }, 300);
+            });
+
+            link.addEventListener('mousemove', updatePreviewPosition);
+        });
+    </script>
+</body>
+</html>
