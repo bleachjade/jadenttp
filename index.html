@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +39,7 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
+        
         body {
             background-color: #0a0a0a;
             color: #ededed;
@@ -63,7 +62,6 @@
         .card-hover {
             transition: all 0.3s ease;
         }
-
         .card-hover:hover {
             transform: translateY(-5px);
             border-color: rgba(59, 130, 246, 0.3);
@@ -72,11 +70,11 @@
 
         /* Custom style for the floating image preview on hover */
         .project-preview {
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease; 
             border: 2px solid rgba(255, 255, 255, 0.1);
             aspect-ratio: 16 / 10;
         }
-
+        
         /* Hero Canvas Styling */
         #hero-shader {
             position: absolute;
@@ -86,35 +84,29 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.6;
-            /* Adjust visibility of shader */
+            opacity: 0.6; /* Adjust visibility of shader */
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: #0a0a0a;
         }
-
         ::-webkit-scrollbar-thumb {
             background: #262626;
             border-radius: 4px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #404040;
         }
     </style>
 </head>
-
 <body class="antialiased">
 
     <!-- Project Hover Preview Element (Targeted by JS) -->
-    <div id="project-preview-img"
-        class="fixed hidden pointer-events-none z-[100] w-64 rounded-xl shadow-2xl opacity-0 project-preview">
+    <div id="project-preview-img" class="fixed hidden pointer-events-none z-[100] w-64 rounded-xl shadow-2xl opacity-0 project-preview">
         <img src="" class="w-full h-full object-cover rounded-xl" alt="Project Preview">
     </div>
 
@@ -127,23 +119,18 @@
 
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="text-sm font-medium text-textMuted hover:text-white transition-colors">About</a>
-                <a href="#projects"
-                    class="text-sm font-medium text-textMuted hover:text-white transition-colors">Work</a>
-                <a href="#archive"
-                    class="text-sm font-medium text-textMuted hover:text-white transition-colors">Archive</a>
-                <a href="#services"
-                    class="text-sm font-medium text-textMuted hover:text-white transition-colors">Services</a>
+                <a href="#projects" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Work</a>
+                <a href="#archive" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Archive</a>
+                <a href="#services" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Services</a>
                 <a href="#blog" class="text-sm font-medium text-textMuted hover:text-white transition-colors">Blog</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <div
-                    class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/5 text-xs text-textMuted font-mono">
+                <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/5 text-xs text-textMuted font-mono">
                     <i data-lucide="clock" class="w-3 h-3"></i>
                     <span id="time-display">--:--:-- ICT</span>
                 </div>
-                <a href="#contact"
-                    class="px-5 py-2 bg-white text-black font-semibold rounded-full text-sm hover:bg-gray-200 transition-colors">
+                <a href="#contact" class="px-5 py-2 bg-white text-black font-semibold rounded-full text-sm hover:bg-gray-200 transition-colors">
                     Book Now
                 </a>
             </div>
@@ -152,39 +139,31 @@
 
     <!-- Hero Section -->
     <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
-
-        <!-- HTML overlay -->
-        <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
-
+        
         <!-- Three.js Shader Background Container -->
         <div id="hero-shader"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="max-w-3xl">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm bg-opacity-80">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm bg-opacity-80">
                     <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
                     Available for new projects
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
-                    Hi, I'm Jade. <br />
+                    Hi, I'm Jade. <br/>
                     <span class="gradient-text">Web Developer.</span>
                 </h1>
                 <p class="text-xl text-textMuted mb-8 max-w-2xl leading-relaxed">
-                    Crafting website solutions that drive user engagement. I build pixel-perfect, performant websites
-                    tailored to your business needs in Thailand and beyond.
+                    Crafting website solutions that drive user engagement. I build pixel-perfect, performant websites tailored to your business needs in Thailand and beyond.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#services"
-                        class="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all">
+                    <a href="#services" class="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all">
                         View Services
                     </a>
-                    <a href="#projects"
-                        class="px-8 py-3 bg-surface border border-white/10 hover:bg-surfaceHighlight text-white font-semibold rounded-full transition-all flex items-center gap-2 backdrop-blur-sm bg-opacity-80">
+                    <a href="#projects" class="px-8 py-3 bg-surface border border-white/10 hover:bg-surfaceHighlight text-white font-semibold rounded-full transition-all flex items-center gap-2 backdrop-blur-sm bg-opacity-80">
                         View Work <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -214,9 +193,12 @@
 
     <!-- Marquee / Brand Logos -->
     <div class="w-full bg-surface border-y border-white/5 py-8 overflow-hidden">
-        <div class="max-w-7xl mx-auto relative">
-            <div class="flex gap-12 animate-marquee whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
-                <!-- Repeated items for smooth loop -->
+        <!-- Changed: Removed max-w-7xl to allow full edge-to-edge flow if desired, or kept for containment. 
+             Added a flex wrapper to hold the two scrolling lists side-by-side. -->
+        <div class="flex overflow-hidden select-none mask-gradient"> 
+            
+            <!-- List 1 -->
+            <div class="flex shrink-0 gap-12 animate-marquee whitespace-nowrap items-center min-w-full justify-around pr-12 opacity-50 hover:opacity-100 transition-opacity">
                 <span class="text-xl font-bold">Honda</span>
                 <span class="text-xl font-bold">Singha</span>
                 <span class="text-xl font-bold">Topcharoen</span>
@@ -234,6 +216,27 @@
                 <span class="text-xl font-bold">CPN Office</span>
                 <span class="text-xl font-bold">Clinixir</span>
             </div>
+
+            <!-- List 2 (Duplicate for seamless loop) -->
+            <div aria-hidden="true" class="flex shrink-0 gap-12 animate-marquee whitespace-nowrap items-center min-w-full justify-around pr-12 opacity-50 hover:opacity-100 transition-opacity">
+                <span class="text-xl font-bold">Honda</span>
+                <span class="text-xl font-bold">Singha</span>
+                <span class="text-xl font-bold">Topcharoen</span>
+                <span class="text-xl font-bold">MG Cars</span>
+                <span class="text-xl font-bold">Pruksa</span>
+                <span class="text-xl font-bold">Nestle</span>
+                <span class="text-xl font-bold">CPN Office</span>
+                <span class="text-xl font-bold">Clinixir</span>
+                <span class="text-xl font-bold">Honda</span>
+                <span class="text-xl font-bold">Singha</span>
+                <span class="text-xl font-bold">Topcharoen</span>
+                <span class="text-xl font-bold">MG Cars</span>
+                <span class="text-xl font-bold">Pruksa</span>
+                <span class="text-xl font-bold">Nestle</span>
+                <span class="text-xl font-bold">CPN Office</span>
+                <span class="text-xl font-bold">Clinixir</span>
+            </div>
+
         </div>
     </div>
 
@@ -245,16 +248,14 @@
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Selected Works</h2>
                     <p class="text-textMuted">A selection of projects I've collaborated on.</p>
                 </div>
-                <a href="#archive" class="text-sm font-medium border-b border-white pb-1 mt-4 md:mt-0">View all
-                    projects</a>
+                <a href="#archive" class="text-sm font-medium border-b border-white pb-1 mt-4 md:mt-0">View all projects</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Project Card 1 -->
                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
                     <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                        <span
-                            class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Honda</span>
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Honda</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Honda</h3>
@@ -268,10 +269,8 @@
 
                 <!-- Project Card 2 -->
                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
-                    <div
-                        class="h-48 bg-gradient-to-br from-yellow-900/40 to-yellow-800/20 flex items-center justify-center">
-                        <span
-                            class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Singha</span>
+                    <div class="h-48 bg-gradient-to-br from-yellow-900/40 to-yellow-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Singha</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Singha</h3>
@@ -283,12 +282,10 @@
                     </div>
                 </div>
 
-                <!-- Project Card 3 -->
+                  <!-- Project Card 3 -->
                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
-                    <div
-                        class="h-48 bg-gradient-to-br from-blue-900/40 to-blue-800/20 flex items-center justify-center">
-                        <span
-                            class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Topcharoen</span>
+                    <div class="h-48 bg-gradient-to-br from-blue-900/40 to-blue-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Topcharoen</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Topcharoen</h3>
@@ -298,18 +295,16 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Project Card 4 -->
-                <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
                     <div class="h-48 bg-gradient-to-br from-red-900/40 to-red-800/20 flex items-center justify-center">
-                        <span
-                            class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Amazing
-                            Thailand</span>
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">Amazing Thailand</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Amazing Thailand x HSH</h3>
                         <p class="text-sm text-textMuted mb-4">Website Initiator</p>
-                        <div class="flex gap-2">
+                         <div class="flex gap-2">
                             <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Tourism</span>
                             <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Lead</span>
                         </div>
@@ -317,29 +312,25 @@
                 </div>
 
                 <!-- Project Card 5 -->
-                <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
-                    <div
-                        class="h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-center justify-center">
-                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">CPN
-                            Office</span>
+                 <div class="group relative bg-surface border border-white/5 rounded-2xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/40 transition-colors">CPN Office</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">CPN Office</h3>
                         <p class="text-sm text-textMuted mb-4">Website Initiator</p>
-                        <div class="flex gap-2">
+                         <div class="flex gap-2">
                             <span class="text-xs px-2 py-1 bg-white/5 rounded text-textMuted">Corporate</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- More projects placeholder link -->
-                <div
-                    class="flex flex-col items-center justify-center bg-surfaceHighlight/30 border border-white/5 rounded-2xl p-6 border-dashed">
+                <div class="flex flex-col items-center justify-center bg-surfaceHighlight/30 border border-white/5 rounded-2xl p-6 border-dashed">
                     <div class="text-center">
                         <h3 class="text-xl font-semibold mb-2">Many More</h3>
                         <p class="text-sm text-textMuted mb-4">Click below to view the full archive.</p>
-                        <a href="#archive"
-                            class="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                        <a href="#archive" class="inline-flex items-center text-primary text-sm font-medium hover:underline">
                             View Full Archive <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
                         </a>
                     </div>
@@ -352,12 +343,10 @@
     <section id="archive" class="py-20 px-6 bg-surface/30">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl font-bold mb-4">Project Archive</h2>
-            <p class="text-textMuted mb-12">A comprehensive list of all past web development projects and
-                collaborations. Hover over a project to see a quick visual preview.</p>
+            <p class="text-textMuted mb-12">A comprehensive list of all past web development projects and collaborations. Hover over a project to see a quick visual preview.</p>
 
             <!-- Table Header -->
-            <div
-                class="hidden md:grid grid-cols-6 gap-4 border-b border-white/10 pb-3 mb-4 text-xs font-semibold uppercase tracking-wider text-textMuted">
+            <div class="hidden md:grid grid-cols-6 gap-4 border-b border-white/10 pb-3 mb-4 text-xs font-semibold uppercase tracking-wider text-textMuted">
                 <span class="col-span-3">Client</span>
                 <span class="col-span-2">Role</span>
                 <span class="col-span-1 text-right">Category</span>
@@ -365,193 +354,155 @@
 
             <!-- Project List (Using grid structure for responsiveness) -->
             <div class="space-y-4">
-
+                
                 <!-- Project 1 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/3b82f6/ffffff?text=Honda+Motors"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/3b82f6/ffffff?text=Honda+Motors" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Honda</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Automotive,
-                        Dev</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Automotive, Dev</span>
                 </a>
 
                 <!-- Project 2 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/a855f7/ffffff?text=Singha+Campaign"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/a855f7/ffffff?text=Singha+Campaign" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Singha</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Beverage,
-                        Frontend</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Beverage, Frontend</span>
                 </a>
 
                 <!-- Project 3 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/404040/ffffff?text=Topcharoen+E-comm"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/404040/ffffff?text=Topcharoen+E-comm" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Topcharoen</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">E-commerce,
-                        Retail</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">E-commerce, Retail</span>
                 </a>
-
+                
                 <!-- Project 4 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/f87171/ffffff?text=MG+Cars+Homepage"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/f87171/ffffff?text=MG+Cars+Homepage" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">MG Cars</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Automotive,
-                        Frontend</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Automotive, Frontend</span>
                 </a>
 
                 <!-- Project 5 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/10b981/ffffff?text=Pruksa+Real+Estate"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/10b981/ffffff?text=Pruksa+Real+Estate" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Pruksa</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Real Estate,
-                        Marketing</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Real Estate, Marketing</span>
                 </a>
 
                 <!-- Project 6 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/93c5fd/ffffff?text=KTB+Landing+Page"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/93c5fd/ffffff?text=KTB+Landing+Page" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">KTB Campaign</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Banking,
-                        Campaign</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Banking, Campaign</span>
                 </a>
 
                 <!-- Project 7 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/f97316/ffffff?text=Purefilter+Shop"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/f97316/ffffff?text=Purefilter+Shop" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Purefilter</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">E-commerce,
-                        Lead</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">E-commerce, Lead</span>
                 </a>
 
                 <!-- Project 8 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/ef4444/ffffff?text=Nestle+Marketing"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/ef4444/ffffff?text=Nestle+Marketing" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Nestle</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">FMCG,
-                        Marketing</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">FMCG, Marketing</span>
                 </a>
 
                 <!-- Project 9 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/374151/ffffff?text=CPN+Office+Site"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/374151/ffffff?text=CPN+Office+Site" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">CPN Office</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate,
-                        Lead</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Lead</span>
                 </a>
 
                 <!-- Project 10 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/99f6e4/000000?text=Amazing+Thailand"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/99f6e4/000000?text=Amazing+Thailand" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Amazing Thailand x HSH</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Tourism,
-                        Lead</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Tourism, Lead</span>
                 </a>
 
                 <!-- Project 11 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/fcd34d/000000?text=Driessen+Catering"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/fcd34d/000000?text=Driessen+Catering" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Driessen Catering</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Food
-                        Service, Lead</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Food Service, Lead</span>
                 </a>
 
                 <!-- Project 12 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/9ca3af/ffffff?text=SMT+Asia+Corporate"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/9ca3af/ffffff?text=SMT+Asia+Corporate" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">SMT Asia</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate,
-                        Dev</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Dev</span>
                 </a>
 
                 <!-- Project 13 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/60a5fa/ffffff?text=LawtonAsia+Finance"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/60a5fa/ffffff?text=LawtonAsia+Finance" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">LawtonAsia</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Finance,
-                        Lead</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Finance, Lead</span>
                 </a>
 
                 <!-- Project 14 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/d8b4fe/000000?text=Clinixir+Healthcare"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/d8b4fe/000000?text=Clinixir+Healthcare" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Clinixir</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Healthcare,
-                        Lead</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Healthcare, Lead</span>
                 </a>
 
                 <!-- Project 15 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/fca5a5/000000?text=PKF+Consulting"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/fca5a5/000000?text=PKF+Consulting" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">PKF</span>
                     <span class="text-sm text-textMuted col-span-2">Website Initiator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Finance,
-                        Corporate</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Finance, Corporate</span>
                 </a>
 
                 <!-- Project 16 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/06b6d4/ffffff?text=Raith+Rovers+Sports"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/06b6d4/ffffff?text=Raith+Rovers+Sports" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">Raith Rovers</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Sports,
-                        Frontend</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Sports, Frontend</span>
                 </a>
 
                 <!-- Project 17 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/92400e/ffffff?text=AustCham+Event"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/92400e/ffffff?text=AustCham+Event" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">AustCham Thailand</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate,
-                        Event</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Event</span>
                 </a>
 
                 <!-- Project 18 -->
-                <a href="#" data-image-url="https://placehold.co/320x200/1e40af/ffffff?text=British+Club+BKK"
-                    class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                <a href="#" data-image-url="https://placehold.co/320x200/1e40af/ffffff?text=British+Club+BKK" class="grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
                     <span class="text-white font-medium col-span-3">British Club BKK</span>
                     <span class="text-sm text-textMuted col-span-2">Team Collaborator</span>
-                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate,
-                        Event</span>
+                    <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">Corporate, Event</span>
                 </a>
 
             </div>
 
-            <div class="mt-12 text-center">
-                <a href="#projects" class="inline-flex items-center text-primary text-sm font-medium hover:underline">
-                    <i data-lucide="arrow-up" class="w-4 h-4 mr-1"></i> Back to Selected Works
-                </a>
-            </div>
+             <div class="mt-12 text-center">
+                 <a href="#projects" class="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                     <i data-lucide="arrow-up" class="w-4 h-4 mr-1"></i> Back to Selected Works
+                 </a>
+             </div>
 
         </div>
     </section>
-
-    <!-- Services / Pricing Section -->
+    
+    <!-- Services / Pricing Section (Completed) -->
     <section id="services" class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">Transparent Pricing</h2>
-                <p class="text-textMuted max-w-2xl mx-auto">Choose the perfect plan for your business. No hidden fees.
-                </p>
+                <p class="text-textMuted max-w-2xl mx-auto">Choose the perfect plan for your business. No hidden fees.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Basic Plan -->
-                <div
-                    class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
+                <div class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
                     <div class="mb-4">
                         <h3 class="text-lg font-semibold">Basic Plan</h3>
                         <p class="text-xs text-textMuted mt-1">Perfect for personal projects</p>
@@ -561,23 +512,16 @@
                         <span class="text-textMuted text-sm">/one-time</span>
                     </div>
                     <ul class="space-y-3 mb-8 flex-1">
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Single-page website</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Responsive Design</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Domain & Hosting incl.</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> 1 Month Maintenance</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Single-page website</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Responsive Design</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Domain & Hosting incl.</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 1 Month Maintenance</li>
                     </ul>
-                    <a href="#contact"
-                        class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select
-                        Plan</a>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select Plan</a>
                 </div>
 
-                <!-- Standard Plan -->
-                <div
-                    class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
+                <!-- Standard Plan (Completed) -->
+                <div class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
                     <div class="mb-4">
                         <h3 class="text-lg font-semibold">Standard Plan</h3>
                         <p class="text-xs text-textMuted mt-1">Ideal for small businesses</p>
@@ -587,176 +531,195 @@
                         <span class="text-textMuted text-sm">/year</span>
                     </div>
                     <ul class="space-y-3 mb-8 flex-1">
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Up to 5 pages</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Basic SEO</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Contact Form</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> 1 Year Maintenance</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Up to 5 pages</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Custom Design System</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> Basic SEO Optimization</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-primary mt-0.5"></i> 6 Months Maintenance</li>
                     </ul>
-                    <a href="#contact"
-                        class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select
-                        Plan</a>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select Plan</a>
                 </div>
 
-                <!-- Professional Plan (Featured) -->
-                <div
-                    class="p-8 rounded-3xl bg-surfaceHighlight border border-primary/30 flex flex-col relative overflow-hidden shadow-2xl shadow-primary/10">
-                    <div
-                        class="absolute top-0 right-0 bg-primary text-white text-[10px] px-3 py-1 rounded-bl-xl font-bold uppercase tracking-wider">
-                        Popular</div>
+                <!-- Premium Plan (Featured) -->
+                <div class="p-8 rounded-3xl bg-surface border border-secondary/50 shadow-lg shadow-secondary/10 flex flex-col relative overflow-hidden transform lg:scale-105">
+                    <div class="absolute top-0 right-0 bg-secondary px-4 py-1 text-xs font-bold uppercase rounded-bl-xl text-white">Popular</div>
                     <div class="mb-4">
-                        <h3 class="text-lg font-semibold text-white">Professional</h3>
-                        <p class="text-xs text-textMuted mt-1">Great for corporates</p>
+                        <h3 class="text-lg font-semibold text-secondary">Premium Plan</h3>
+                        <p class="text-xs text-textMuted mt-1">For growing enterprises & full apps</p>
                     </div>
                     <div class="mb-6">
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-3xl font-bold">฿50,000</span>
-                            <span class="text-sm text-textMuted line-through">฿70k</span>
-                        </div>
-                        <span class="text-textMuted text-sm">/year</span>
+                        <span class="text-3xl font-bold">฿80,000</span>
+                        <span class="text-textMuted text-sm">/project</span>
                     </div>
                     <ul class="space-y-3 mb-8 flex-1">
-                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Up to 10 pages</li>
-                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Advanced SEO</li>
-                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> 3 Revisions</li>
-                        <li class="flex items-start gap-2 text-sm text-white"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> 1 Year Maintenance</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-secondary mt-0.5"></i> Multi-page (10+)</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-secondary mt-0.5"></i> Custom backend integration</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-secondary mt-0.5"></i> Advanced SEO & Performance</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check" class="w-4 h-4 text-secondary mt-0.5"></i> 1 Year Priority Support</li>
                     </ul>
-                    <a href="#contact"
-                        class="w-full py-2.5 rounded-lg bg-primary text-white text-center text-sm font-medium hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/25">Select
-                        Plan</a>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-secondary bg-secondary text-black text-center text-sm font-medium hover:bg-secondary/80 transition-all">Start Project</a>
                 </div>
 
-                <!-- E-Commerce Plan -->
-                <div
-                    class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
+                <!-- Enterprise / Custom Plan -->
+                <div class="p-8 rounded-3xl bg-surface border border-white/5 flex flex-col hover:border-white/20 transition-colors relative overflow-hidden">
                     <div class="mb-4">
-                        <h3 class="text-lg font-semibold">E-commerce</h3>
-                        <p class="text-xs text-textMuted mt-1">For online stores</p>
+                        <h3 class="text-lg font-semibold">Custom Plan</h3>
+                        <p class="text-xs text-textMuted mt-1">Large-scale, unique requirements</p>
                     </div>
                     <div class="mb-6">
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-3xl font-bold">฿90,000</span>
-                            <span class="text-sm text-textMuted line-through">฿120k</span>
-                        </div>
-                        <span class="text-textMuted text-sm">/year</span>
+                        <span class="text-3xl font-bold">Let's Talk</span>
                     </div>
                     <ul class="space-y-3 mb-8 flex-1">
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Up to 20 pages</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> E-commerce Ready</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> Advanced SEO</li>
-                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="check"
-                                class="w-4 h-4 text-primary mt-0.5"></i> 1 Year Maintenance</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="plus-circle" class="w-4 h-4 text-textMuted mt-0.5"></i> Custom App Development</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="plus-circle" class="w-4 h-4 text-textMuted mt-0.5"></i> Ongoing Retainer Service</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="plus-circle" class="w-4 h-4 text-textMuted mt-0.5"></i> Dedicated Team Access</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-300"><i data-lucide="plus-circle" class="w-4 h-4 text-textMuted mt-0.5"></i> Advanced Integrations</li>
                     </ul>
-                    <a href="#contact"
-                        class="w-full py-2.5 rounded-lg border border-white/10 bg-transparent text-center text-sm font-medium hover:bg-white hover:text-black transition-all">Select
-                        Plan</a>
+                    <a href="#contact" class="w-full py-2.5 rounded-lg border border-primary bg-primary text-white text-center text-sm font-medium hover:bg-primary/80 transition-all">Get Quote</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="py-20 px-6 bg-background">
+    <section id="blog" class="py-20 px-6 bg-surface/30">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12">Latest Insights</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Latest Insights</h2>
+                <p class="text-textMuted max-w-2xl mx-auto">Thoughts on modern web development, design, and performance.</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Blog 1 -->
-                <article class="group cursor-pointer">
-                    <div
-                        class="h-48 rounded-2xl bg-surfaceHighlight border border-white/5 mb-4 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="px-2 py-1 bg-primary/20 text-primary text-xs rounded font-medium">Tech</span>
-                        </div>
+                <!-- Blog Post 1 -->
+                <div class="bg-surface rounded-2xl p-6 border border-white/5 card-hover">
+                    <div class="text-xs text-primary font-semibold uppercase mb-2">Development</div>
+                    <h3 class="text-xl font-semibold mb-3 hover:text-primary transition-colors cursor-pointer">
+                        The Rise of Signals: Beyond React States
+                    </h3>
+                    <p class="text-sm text-textMuted mb-4">A deep dive into how modern frameworks are using reactive primitives for better performance.</p>
+                    <div class="flex justify-between items-center text-xs text-textMuted">
+                        <span>October 1, 2025</span>
+                        <a href="#" class="flex items-center hover:text-white transition-colors">
+                            Read More <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Static vs. Dynamic
-                        Websites: Which One Fits?</h3>
-                    <p class="text-textMuted text-sm line-clamp-2">Understanding the core differences between site
-                        architectures to make the best decision for your business needs.</p>
-                </article>
-
-                <!-- Blog 2 -->
-                <article class="group cursor-pointer">
-                    <div
-                        class="h-48 rounded-2xl bg-surfaceHighlight border border-white/5 mb-4 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span
-                                class="px-2 py-1 bg-secondary/20 text-secondary text-xs rounded font-medium">Design</span>
-                        </div>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="bg-surface rounded-2xl p-6 border border-white/5 card-hover">
+                    <div class="text-xs text-secondary font-semibold uppercase mb-2">Design</div>
+                    <h3 class="text-xl font-semibold mb-3 hover:text-secondary transition-colors cursor-pointer">
+                        The Dark Side of UI: Mastering Dark Themes
+                    </h3>
+                    <p class="text-sm text-textMuted mb-4">Tips and tricks for creating aesthetically pleasing and accessible dark user interfaces.</p>
+                    <div class="flex justify-between items-center text-xs text-textMuted">
+                        <span>September 20, 2025</span>
+                        <a href="#" class="flex items-center hover:text-white transition-colors">
+                            Read More <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Why Mobile First
-                        Design Is Critical</h3>
-                    <p class="text-textMuted text-sm line-clamp-2">With mobile traffic overtaking desktop, learn why
-                        prioritizing smaller screens boosts conversions.</p>
-                </article>
-
-                <!-- Blog 3 -->
-                <article class="group cursor-pointer">
-                    <div
-                        class="h-48 rounded-2xl bg-surfaceHighlight border border-white/5 mb-4 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span
-                                class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded font-medium">SEO</span>
-                        </div>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="bg-surface rounded-2xl p-6 border border-white/5 card-hover">
+                    <div class="text-xs text-primary font-semibold uppercase mb-2">Tools</div>
+                    <h3 class="text-xl font-semibold mb-3 hover:text-primary transition-colors cursor-pointer">
+                        Why Tailwind CSS Speeds Up Development
+                    </h3>
+                    <p class="text-sm text-textMuted mb-4">Exploring the utility-first philosophy and how it revolutionizes frontend workflow.</p>
+                    <div class="flex justify-between items-center text-xs text-textMuted">
+                        <span>September 5, 2025</span>
+                        <a href="#" class="flex items-center hover:text-white transition-colors">
+                            Read More <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">How to Set Up
-                        Google Business Profile</h3>
-                    <p class="text-textMuted text-sm line-clamp-2">A step-by-step guide to mastering local SEO and
-                        getting found by customers in your area.</p>
-                </article>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / CTA -->
-    <footer id="contact" class="border-t border-white/10 bg-surface/20 pt-20 pb-10 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to start?</h2>
-            <p class="text-textMuted max-w-xl mx-auto mb-10 text-lg">Let's turn your vision into a high-performing
-                website. Book a call today for a free consultation.</p>
-
-            <a href="mailto:contact@jadenttp.work"
-                class="inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-lg font-bold rounded-full hover:scale-105 transition-transform">
-                <i data-lucide="mail"></i> Get in Touch
-            </a>
-
-            <div class="flex justify-center gap-6 mt-16 mb-16">
-                <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
-                <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="github"></i></a>
-                <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="twitter"></i></a>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-textMuted max-w-2xl mx-auto">Ready to start a project? Send a message and let's discuss your vision.</p>
             </div>
 
-            <div
-                class="flex flex-col md:flex-row justify-between items-center text-sm text-textMuted border-t border-white/5 pt-8">
-                <p>&copy; 2025 Jadenttp. All rights reserved.</p>
-                <div class="flex gap-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white">Privacy</a>
-                    <a href="#" class="hover:text-white">Terms</a>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 bg-surface p-8 md:p-12 rounded-3xl border border-white/5 shadow-xl">
+                <!-- Contact Form -->
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2 text-textMain">Full Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-3 bg-background border border-surfaceHighlight rounded-xl focus:ring-primary focus:border-primary transition-colors text-white placeholder-textMuted"
+                            placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2 text-textMain">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-3 bg-background border border-surfaceHighlight rounded-xl focus:ring-primary focus:border-primary transition-colors text-white placeholder-textMuted"
+                            placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2 text-textMain">Project Details</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 bg-background border border-surfaceHighlight rounded-xl focus:ring-primary focus:border-primary transition-colors text-white placeholder-textMuted"
+                            placeholder="Tell me about your project, budget, and timeline..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all flex items-center justify-center">
+                        Send Message <i data-lucide="send" class="w-4 h-4 ml-2 inline-block"></i>
+                    </button>
+                    <p id="form-message" class="text-center text-sm pt-2 text-primary"></p>
+                </form>
+
+                <!-- Contact Details -->
+                <div class="space-y-8 lg:mt-6">
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="mail" class="w-6 h-6 text-primary flex-shrink-0 mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Email Me</p>
+                            <a href="mailto:jade@webdev.th" class="text-textMuted hover:text-white transition-colors">jade@webdev.th</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-primary flex-shrink-0 mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Location</p>
+                            <p class="text-textMuted">Bangkok, Thailand (Available Worldwide)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="calendar" class="w-6 h-6 text-primary flex-shrink-0 mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Book a Call</p>
+                            <a href="https://calendly.com/jade-dev" target="_blank" class="text-textMuted hover:text-white transition-colors">Schedule via Calendly</a>
+                        </div>
+                    </div>
+
+                    <!-- Socials -->
+                    <div class="pt-4 border-t border-white/5">
+                        <p class="font-semibold mb-4">Find Me Online</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="github" class="w-6 h-6"></i></a>
+                            <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                            <a href="#" class="text-textMuted hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-textMuted">
+            <p>&copy; 2025 Jade. All rights reserved. | Crafted with <span class="text-red-500">&hearts;</span> in Bangkok</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#projects" class="hover:text-white transition-colors">Work</a>
+                <a href="#services" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- GLOBAL IMAGE PREVIEW CONTAINER -->
-    <!-- This div is hidden by default and dynamically positioned/shown on archive link hover -->
-    <div id="image-preview"
-        class="project-preview fixed top-0 left-0 w-80 h-auto rounded-xl overflow-hidden shadow-2xl z-50 pointer-events-none opacity-0 transition-opacity duration-300">
-        <img id="preview-image" src="" alt="Project Preview" class="w-full h-full object-cover">
-        <!-- Optional light frosted effect -->
-        <div class="absolute inset-0 bg-black/10 backdrop-blur-[1px]"></div>
-    </div>
 
     <script>
         // 1. Initialize Lucide Icons
@@ -785,7 +748,7 @@
 
         projectLinks.forEach(link => {
             // Mouse Enter: Show and set image
-            link.addEventListener('mouseenter', function (e) {
+            link.addEventListener('mouseenter', function(e) {
                 const imageUrl = this.getAttribute('data-image-url');
                 if (imageUrl) {
                     previewImg.src = imageUrl;
@@ -793,13 +756,13 @@
                     // Start opaque transition
                     setTimeout(() => {
                         preview.style.opacity = '1';
-                    }, 50);
+                    }, 50); 
                     movePreview(e);
                 }
             });
 
             // Mouse Leave: Hide after transition
-            link.addEventListener('mouseleave', function () {
+            link.addEventListener('mouseleave', function() {
                 preview.style.opacity = '0';
                 setTimeout(() => {
                     preview.classList.add('hidden');
@@ -834,6 +797,19 @@
             preview.style.top = `${y}px`;
         }
 
+        // 4. Contact Form Submission (Placeholder functionality)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = 'Thank you for your message! I will be in touch shortly.';
+            formMessage.classList.remove('text-red-500');
+            formMessage.classList.add('text-primary');
+            this.reset();
+            setTimeout(() => {
+                formMessage.textContent = '';
+            }, 5000);
+        });
+
         // 5. Three.js Hero Shader Animation
         (function initThreeJS() {
             const container = document.getElementById('hero-shader');
@@ -842,7 +818,7 @@
             const scene = new THREE.Scene();
             const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
             const renderer = new THREE.WebGLRenderer({ alpha: true });
-
+            
             renderer.setSize(container.clientWidth, container.clientHeight);
             container.appendChild(renderer.domElement);
 
@@ -944,5 +920,4 @@
         })();
     </script>
 </body>
-
 </html>
