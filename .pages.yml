@@ -6,7 +6,7 @@ content:
   - name: data
     label: Website Data
     path: src/content/data.json # Everything is stored in this ONE file
-    type: file
+    type: json
     fields:
       # 1. The Blog Section (List of posts)
       - name: posts
