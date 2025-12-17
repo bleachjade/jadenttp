@@ -11,7 +11,7 @@ content:
       # 1. The Blog Section (List of posts)
       - name: posts
         label: Blog Posts
-        type: list # This allows you to append new items to the array
+        type: object
         item_label: "{{title}} - {{pubDate}}" # Helps identify posts in the CMS UI
         fields:
           - name: title
