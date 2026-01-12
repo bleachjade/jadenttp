@@ -1129,95 +1129,95 @@
             });
 
             // 6. gold api
-            const goldAPI = {
-                accessToken: process.env.accessToken,
+            // const goldAPI = {
+            //     accessToken: 'mock',
 
-                // Conversion of: file_get_contents + DOMDocument + XPath
-                getLivePricesFromSource: async () => {
-                    const targetUrl = "https://xn--42cah7d0cxcvbbb9x.com/";
+            //     // Conversion of: file_get_contents + DOMDocument + XPath
+            //     getLivePricesFromSource: async () => {
+            //         const targetUrl = "https://xn--42cah7d0cxcvbbb9x.com/";
 
-                    try {
-                        // Browsers block CORS to this URL directly. 
-                        // In a production Node.js environment, you'd use 'axios' or 'fetch'.
-                        // For simulation, we'll mimic the parsing logic of the PHP script.
-                        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`);
-                        const json = await response.json();
-                        const htmlString = json.contents;
+            //         try {
+            //             // Browsers block CORS to this URL directly. 
+            //             // In a production Node.js environment, you'd use 'axios' or 'fetch'.
+            //             // For simulation, we'll mimic the parsing logic of the PHP script.
+            //             const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`);
+            //             const json = await response.json();
+            //             const htmlString = json.contents;
 
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(htmlString, 'text/html');
+            //             const parser = new DOMParser();
+            //             const doc = parser.parseFromString(htmlString, 'text/html');
 
-                        // PHP XPath: //*[@id="rightCol"]/div[contains(@class,"divgta")]/table/tbody/tr[1]/td[2]
-                        // JS Selector translation:
-                        const buyNode = doc.querySelector('#rightCol .divgta table tbody tr:nth-child(1) td:nth-child(2)');
-                        const sellNode = doc.querySelector('#rightCol .divgta table tbody tr:nth-child(1) td:nth-child(3)');
+            //             // PHP XPath: //*[@id="rightCol"]/div[contains(@class,"divgta")]/table/tbody/tr[1]/td[2]
+            //             // JS Selector translation:
+            //             const buyNode = doc.querySelector('#rightCol .divgta table tbody tr:nth-child(1) td:nth-child(2)');
+            //             const sellNode = doc.querySelector('#rightCol .divgta table tbody tr:nth-child(1) td:nth-child(3)');
 
-                        if (buyNode && sellNode) {
-                            return {
-                                buy: parseFloat(buyNode.textContent.replace(/,/g, '')),
-                                sell: parseFloat(sellNode.textContent.replace(/,/g, ''))
-                            };
-                        }
-                        throw new Error("Unable to parse gold prices");
-                    } catch (err) {
-                        console.error("Scraping error:", err);
-                        // Fallback to mock if proxy fails in browser environment
-                        return { buy: 42500, sell: 42600 };
-                    }
-                },
+            //             if (buyNode && sellNode) {
+            //                 return {
+            //                     buy: parseFloat(buyNode.textContent.replace(/,/g, '')),
+            //                     sell: parseFloat(sellNode.textContent.replace(/,/g, ''))
+            //                 };
+            //             }
+            //             throw new Error("Unable to parse gold prices");
+            //         } catch (err) {
+            //             console.error("Scraping error:", err);
+            //             // Fallback to mock if proxy fails in browser environment
+            //             return { buy: 67500, sell: 67500 };
+            //         }
+            //     },
 
-                // Webhook Handler
-                handleLineWebhook: async (payload) => {
-                    const events = payload.events;
-                    if (!events) return;
+            //     // Webhook Handler
+            //     handleLineWebhook: async (payload) => {
+            //         const events = payload.events;
+            //         if (!events) return;
 
-                    for (const event of events) {
-                        if (event.type !== 'message' || event.message.type !== 'text') continue;
+            //         for (const event of events) {
+            //             if (event.type !== 'message' || event.message.type !== 'text') continue;
 
-                        const userMessage = event.message.text.trim().toLowerCase();
-                        const replyToken = event.replyToken;
-                        let replyText = "";
+            //             const userMessage = event.message.text.trim().toLowerCase();
+            //             const replyToken = event.replyToken;
+            //             let replyText = "";
 
-                        if (userMessage === "information") {
-                            replyText = "This is your gold info bot. Commands: information, add_gold, gold_profit";
-                        } else if (userMessage === "gold_profit") {
-                            const prices = await goldAPI.getLivePricesFromSource();
+            //             if (userMessage === "information") {
+            //                 replyText = "This is your gold info bot. Commands: information, add_gold, gold_profit";
+            //             } else if (userMessage === "gold_profit") {
+            //                 const prices = await goldAPI.getLivePricesFromSource();
 
-                            if (prices) {
-                                const goldAmount = 5;
-                                const goldPrice1 = 45750 * 3;
-                                const goldPrice2 = 61460 * 2;
-                                const profit = (prices.buy * goldAmount) - (goldPrice1 + goldPrice2);
+            //                 if (prices) {
+            //                     const goldAmount = 5;
+            //                     const goldPrice1 = 45750 * 3;
+            //                     const goldPrice2 = 61460 * 2;
+            //                     const profit = (prices.buy * goldAmount) - (goldPrice1 + goldPrice2);
 
-                                replyText = `ทองคำแท่ง-รับซื้อ=${prices.buy.toLocaleString()},\nทองคำแท่ง-ขายออก=${prices.sell.toLocaleString()}\nProfit: ${profit >= 0 ? '+' : ''}${profit.toLocaleString()} บาท`;
-                            } else {
-                                replyText = "Failed to fetch gold prices.";
-                            }
-                        } else {
-                            replyText = "Unknown command. Type 'information' for help.";
-                        }
+            //                     replyText = `ทองคำแท่ง-รับซื้อ=${prices.buy.toLocaleString()},\nทองคำแท่ง-ขายออก=${prices.sell.toLocaleString()}\nProfit: ${profit >= 0 ? '+' : ''}${profit.toLocaleString()} บาท`;
+            //                 } else {
+            //                     replyText = "Failed to fetch gold prices.";
+            //                 }
+            //             } else {
+            //                 replyText = "Unknown command. Type 'information' for help.";
+            //             }
 
-                        await goldAPI.sendLineReply(replyToken, replyText);
-                    }
-                },
+            //             await goldAPI.sendLineReply(replyToken, replyText);
+            //         }
+            //     },
 
-                sendLineReply: async (replyToken, text) => {
-                    console.log(`%c[LINE REPLY] Token: ${replyToken}`, "color: #00c300; font-weight: bold;");
-                    console.log("Message Content:\n", text);
-                    return Promise.resolve({ success: true });
-                }
-            };
+            //     sendLineReply: async (replyToken, text) => {
+            //         console.log(`%c[LINE REPLY] Token: ${replyToken}`, "color: #00c300; font-weight: bold;");
+            //         console.log("Message Content:\n", text);
+            //         return Promise.resolve({ success: true });
+            //     }
+            // };
 
             // Trigger simulation
-            setTimeout(() => {
-                goldAPI.handleLineWebhook({
-                    events: [{
-                        type: 'message',
-                        replyToken: 'sim_token_123',
-                        message: { type: 'text', text: 'gold_profit' }
-                    }]
-                });
-            }, 1500);
+            // setTimeout(() => {
+            //     goldAPI.handleLineWebhook({
+            //         events: [{
+            //             type: 'message',
+            //             replyToken: 'sim_token_123',
+            //             message: { type: 'text', text: 'gold_profit' }
+            //         }]
+            //     });
+            // }, 1500);
         })();
     </script>
 </body>
