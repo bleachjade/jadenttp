@@ -636,7 +636,7 @@
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-textMuted">
-            <p>&copy; 2025 Jade. All rights reserved. | Crafted with <span class="text-red-500">&hearts;</span> in
+            <p>&copy; 2026 Jade. All rights reserved. | Crafted with <span class="text-red-500">&hearts;</span> in
                 Bangkok</p>
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#projects" class="hover:text-white transition-colors">Work</a>
@@ -1127,6 +1127,102 @@
                 renderer.setSize(width, height);
                 uniforms.u_resolution.value.set(width, height);
             });
+
+            /**
+         * 6. MOCK API & LINE WEBHOOK LOGIC
+         * Converted from PHP to JS for Node.js/Serverless environments.
+         */
+            const goldAPI = {
+                accessToken: 'n3TFRXtGZADgKNkdSuI/zexoxpHJnLPsFzIfRJZJoWPMXOeCQoxjXNcm6ZdcZBZUSdnkrcqg957vI5smDB4NAhqA6ciuG9XR/ZRLM5iRYOwkRlRPM/QVjG1U+j4XqoWTwLEnu3eusoYpw8WBEH5n4wdB04t89/1O/w1cDnyilFU=',
+
+                // Mock Calculation Function (Internal use)
+                getLivePrices: async () => {
+                    // In production, you would fetch from your scraping service or an API
+                    const basePrice = 42000;
+                    const buy = Math.floor(basePrice + (Math.random() * 100));
+                    return { buy, sell: buy + 100 };
+                },
+
+                // Converted line_webhook_handler
+                handleLineWebhook: async (payload) => {
+                    const events = payload.events;
+                    if (!events || events.length === 0) return { status: 200, message: 'No events' };
+
+                    for (const event of events) {
+                        if (event.type !== 'message' || event.message.type !== 'text') continue;
+
+                        const userMessage = event.message.text.trim().toLowerCase();
+                        const replyToken = event.replyToken;
+                        let replyText = "";
+
+                        if (userMessage === "information") {
+                            replyText = "This is your gold info bot. Commands: information, gold_profit";
+                        } else if (userMessage === "gold_profit") {
+                            try {
+                                const prices = await goldAPI.getLivePrices();
+                                const goldAmount = 5;
+                                const goldPrice1 = 45750 * 3;
+                                const goldPrice2 = 61460 * 2;
+                                const profit = (prices.buy * goldAmount) - (goldPrice1 + goldPrice2);
+
+                                replyText = `ทองคำแท่ง-รับซื้อ=${prices.buy.toLocaleString()},\nทองคำแท่ง-ขายออก=${prices.sell.toLocaleString()}\nProfit: ${profit >= 0 ? '+' : ''}${profit.toLocaleString()} บาท`;
+                            } catch (err) {
+                                replyText = "Failed to calculate gold prices.";
+                            }
+                        } else {
+                            replyText = "Unknown command. Type 'information' for help.";
+                        }
+
+                        // Send reply to LINE API
+                        await goldAPI.sendLineReply(replyToken, replyText);
+                    }
+                    return { status: 200, message: 'OK' };
+                },
+
+                // Helper for fetch (CURL replacement)
+                sendLineReply: async (replyToken, text) => {
+                    const url = "https://api.line.me/v2/bot/message/reply";
+                    const body = {
+                        replyToken: replyToken,
+                        messages: [{ type: 'text', text: text }]
+                    };
+
+                    console.log(`%c[LINE OUTGOING] To: ${replyToken}`, "color: #00c300; font-weight: bold;");
+                    console.log("Message:", text);
+
+                    // Mocking the actual fetch call since we are in a browser
+                    return Promise.resolve({ success: true });
+
+                    /* Real implementation:
+                    return fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${goldAPI.accessToken}`
+                        },
+                        body: JSON.stringify(body)
+                    });
+                    */
+                }
+            };
+
+            // --- SIMULATION ---
+            // Simulating an incoming LINE webhook request (POST)
+            const simulateWebhook = () => {
+                const mockPayload = {
+                    events: [{
+                        type: 'message',
+                        replyToken: 'nh7bcc123456789',
+                        message: { type: 'text', text: 'gold_profit' }
+                    }]
+                };
+
+                console.log("%c[WEBHOOK INCOMING]", "color: #3b82f6; font-weight: bold;");
+                goldAPI.handleLineWebhook(mockPayload);
+            };
+
+            // Run simulation after a short delay
+            setTimeout(simulateWebhook, 2000);
         })();
     </script>
 </body>
