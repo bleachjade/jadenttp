@@ -16,19 +16,23 @@
         content="https://res.cloudinary.com/dtwgigsce/image/upload/v1765507246/portfolio-website/og-image_1_grvgsu.png">
     <meta property="og:url" content="https://jadenttp.work/">
 
-    <!-- Google tag (gtag.js) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPNDX1NVKH"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-YPNDX1NVKH');
     </script>
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -37,8 +41,8 @@
                         background: '#0a0a0a',
                         surface: '#171717',
                         surfaceHighlight: '#262626',
-                        primary: '#3b82f6', // Blue accent
-                        secondary: '#a855f7', // Purple accent
+                        primary: '#3b82f6',
+                        secondary: '#a855f7',
                         textMain: '#ededed',
                         textMuted: '#a3a3a3',
                     },
@@ -80,6 +84,14 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .wave-word {
+            display: inline-block;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #ededed, #ededed);
+            transition: background-image 0.1s ease-out;
+        }
+
         .card-hover {
             transition: all 0.3s ease;
         }
@@ -90,14 +102,12 @@
             box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
         }
 
-        /* Custom style for the floating image preview on hover */
         .project-preview {
             transition: opacity 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.1);
             aspect-ratio: 16 / 10;
         }
 
-        /* Hero Canvas Styling */
         #hero-shader {
             position: absolute;
             top: 0;
@@ -107,16 +117,13 @@
             z-index: 0;
             pointer-events: none;
             opacity: 0.6;
-            /* Adjust visibility of shader */
         }
 
-        /* Mask Gradient for Marquee */
         .mask-gradient {
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -169,16 +176,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        <div class="bg-black/50 absolute top-0 left-0 w-full h-full z-10"></div>
 
-        <div class="bg-black/20 absolute top-0 left-0 w-full h-full z-10"></div>
-
-        <!-- Three.js Shader Background Container -->
         <div id="hero-shader"></div>
 
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="max-w-3xl">
+        <div class="max-w-7xl mx-auto relative z-10 pointer-events-none">
+            <div class="max-w-3xl pointer-events-auto">
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm bg-opacity-80">
                     <span class="relative flex h-2 w-2">
@@ -188,10 +192,15 @@
                     </span>
                     Available for new projects
                 </div>
-                <h1 class="text-4xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
-                    Hi, I'm Jade. <br />
-                    <span class="gradient-text">Web Developer.</span>
+
+                <h1 class="text-4xl md:text-7xl font-bold tracking-tight leading-tight mb-6 relative z-20">
+                    <span class="wave-word">Hi,</span>
+                    <span class="wave-word">I'm</span>
+                    <span class="wave-word">Jade.</span> <br />
+                    <span class="wave-word">Web</span>
+                    <span class="wave-word">Developer.</span>
                 </h1>
+
                 <p class="text-lg md:text-xl text-textMuted mb-8 max-w-2xl leading-relaxed">
                     Crafting website solutions that drive user engagement. I build pixel-perfect, performant websites
                     tailored to your business needs in Thailand and beyond.
@@ -202,14 +211,13 @@
                         View Services
                     </a>
                     <a href="#projects"
-                        class="px-8 py-3 bg-surface border border-white/10 hover:bg-surfaceHighlight text-white font-semibold rounded-full transition-all flex items-center gap-2 backdrop-blur-sm bg-opacity-80 w-full md:w-fit flex justify-center items-center">
+                        class="px-8 py-3 bg-surface border border-white/10 hover:bg-surfaceHighlight text-white font-semibold rounded-full transition-all flex items-center gap-2 backdrop-blur-sm bg-opacity-80 w-full md:w-fit justify-center">
                         View Work <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-white/10 pt-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 border-t border-white/10 pt-10 pointer-events-auto">
                 <div>
                     <h3 class="text-3xl font-bold text-white mb-1">7+</h3>
                     <p class="text-textMuted text-sm">Years of Experience</p>
@@ -219,57 +227,67 @@
                     <p class="text-textMuted text-sm">Projects Completed</p>
                 </div>
 
-                <!-- Technologies Mastered with Hover Effect -->
                 <div class="relative group">
-                    <h3 class="text-3xl font-bold text-white mb-1 cursor-help w-fit">
-                        10+</h3>
+                    <h3 class="text-3xl font-bold text-white mb-1 cursor-help w-fit">10+</h3>
                     <p class="text-textMuted text-sm">Technologies Mastered</p>
 
-                    <!-- Hover Box / Tooltip -->
                     <div
                         class="absolute bottom-full left-1/2 md:-translate-x-1/2 mb-3 w-64 p-4 bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 pointer-events-none group-hover:pointer-events-auto">
                         <div
                             class="text-xs text-center text-textMuted mb-3 pb-2 border-b border-white/5 uppercase tracking-wider font-semibold">
                             My Tech Stack</div>
                         <div class="grid grid-cols-4 gap-4 justify-items-center">
-                            <!-- Tech Icons (Using Devicon CDNs) -->
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="HTML5" alt="HTML5">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="CSS3" alt="CSS3">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="JavaScript" alt="JS">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="Git" alt="Git">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="Figma" alt="Figma">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="Python" alt="Python">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="React.js" alt="React">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
                                 class="w-8 h-8 bg-white rounded-full p-0.5 hover:scale-110 transition-transform"
                                 title="Next.js" alt="Next.js">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg"
                                 class="w-8 h-8 bg-white rounded-full p-0.5 hover:scale-110 transition-transform"
                                 title="Three.js" alt="Three.js">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="PHP" alt="PHP">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="Laravel" alt="Laravel">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="WordPress" alt="WordPress">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="TypeScript" alt="TS">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="Tailwind" alt="Tailwind">
-                            <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg"
+                            <img loading="lazy" src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg"
                                 class="w-8 h-8 bg-white rounded-full p-0.5 hover:scale-110 transition-transform"
                                 title="GSAP" alt="GSAP">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                            <img loading="lazy"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
                                 class="w-8 h-8 hover:scale-110 transition-transform" title="Docker" alt="Docker">
                         </div>
-                        <!-- Arrow -->
                         <div
                             class="absolute top-full left-1/2 -translate-x-1/2 -mt-2 border-8 border-transparent border-t-[#1a1a1a]">
                         </div>
@@ -962,180 +980,239 @@
     </script>
 
     <script>
-        // 1. Initialize Lucide Icons
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            // Init Icons
+            if (typeof lucide !== 'undefined') lucide.createIcons();
 
-        // 2. Real-time Clock (ICT - Indochina Time, which is GMT+7 in Thailand)
-        function updateClock() {
-            const now = new Date();
-            const options = {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false,
-                timeZone: 'Asia/Bangkok' // Thailand time zone (ICT)
-            };
-            const formatter = new Intl.DateTimeFormat('en-US', options);
-            document.getElementById('time-display').textContent = formatter.format(now) + ' ICT';
-        }
-        setInterval(updateClock, 1000);
-        updateClock(); // Initial call
-
-        // 4. Currency Switcher Logic
-        const currencyToggle = document.getElementById('currency-toggle');
-        const currencyThumb = document.getElementById('currency-thumb');
-        const priceVals = document.querySelectorAll('.price-val');
-        const curThb = document.getElementById('cur-thb');
-        const curUsd = document.getElementById('cur-usd');
-
-        let currentCurrency = 'THB'; // Initial
-
-        function updateCurrencyUI(target) {
-            currentCurrency = target;
-            const isUsd = currentCurrency === 'USD';
-
-            // Toggle thumb position
-            currencyThumb.style.left = isUsd ? '26px' : '4px';
-
-            // Update labels highlight
-            curThb.style.color = isUsd ? '#a3a3a3' : '#3b82f6';
-            curUsd.style.color = isUsd ? '#a855f7' : '#a3a3a3';
-
-            // Update prices with animation
-            priceVals.forEach(p => {
-                p.classList.remove('price-animate');
-                void p.offsetWidth; // Trigger reflow
-                p.classList.add('price-animate');
-                p.textContent = isUsd ? p.getAttribute('data-usd') : p.getAttribute('data-thb');
-            });
-        }
-
-        currencyToggle.addEventListener('click', () => {
-            updateCurrencyUI(currentCurrency === 'THB' ? 'USD' : 'THB');
-            resetLoop();
-        });
-
-        // Auto-loop every 5 seconds
-        let loopInterval = setInterval(() => {
-            updateCurrencyUI(currentCurrency === 'THB' ? 'USD' : 'THB');
-        }, 5000);
-
-        function resetLoop() {
-            clearInterval(loopInterval);
-            loopInterval = setInterval(() => {
-                updateCurrencyUI(currentCurrency === 'THB' ? 'USD' : 'THB');
-            }, 5000);
-        }
-
-        // 5. Three.js Hero Shader Animation
-        (function initThreeJS() {
-            const container = document.getElementById('hero-shader');
-            if (!container) return;
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement);
-
-            // Shader Code
-            const vertexShader = `
-                varying vec2 vUv;
-                void main() {
-                    vUv = uv;
-                    gl_Position = vec4(position, 1.0);
-                }
-            `;
-
-            const fragmentShader = `
-                uniform float u_time;
-                uniform vec2 u_resolution;
-                varying vec2 vUv;
-
-                // Simplex noise function
-                vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
-                float snoise(vec2 v){
-                    const vec4 C = vec4(0.211324865405187, 0.366025403784439,
-                            -0.577350269189626, 0.024390243902439);
-                    vec2 i  = floor(v + dot(v, C.yy) );
-                    vec2 x0 = v -   i + dot(i, C.xx);
-                    vec2 i1;
-                    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-                    vec4 x12 = x0.xyxy + C.xxzz;
-                    x12.xy -= i1;
-                    i = mod(i, 289.0);
-                    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-                    + i.x + vec3(0.0, i1.x, 1.0 ));
-                    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-                    m = m*m ;
-                    m = m*m ;
-                    vec3 x = 2.0 * fract(p * C.www) - 1.0;
-                    vec3 h = abs(x) - 0.5;
-                    vec3 ox = floor(x + 0.5);
-                    vec3 a0 = x - ox;
-                    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
-                    vec3 g;
-                    g.x  = a0.x  * x0.x  + h.x  * x0.y;
-                    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-                    return 130.0 * dot(m, g);
-                }
-
-                void main() {
-                    // Mobile fix: Divide by min dimension to keep aspect ratio uniform
-                    vec2 st = gl_FragCoord.xy / min(u_resolution.x, u_resolution.y);
-                    
-                    // Brand Colors normalized
-                    vec3 color1 = vec3(0.04, 0.04, 0.04); // Background #0a0a0a
-                    vec3 color2 = vec3(0.23, 0.51, 0.96); // Primary #3b82f6
-                    vec3 color3 = vec3(0.66, 0.33, 0.97); // Secondary #a855f7
-                    
-                    // Create fluid motion
-                    float noise1 = snoise(st * 3.0 + u_time * 0.2);
-                    float noise2 = snoise(st * 4.0 - u_time * 0.15);
-                    
-                    // Mix colors based on noise
-                    vec3 mixedColor = mix(color1, color2, smoothstep(-0.5, 0.8, noise1));
-                    mixedColor = mix(mixedColor, color3, smoothstep(-0.6, 0.7, noise2));
-                    
-                    // Darken slightly for text readability
-                    mixedColor *= 0.8; 
-
-                    gl_FragColor = vec4(mixedColor, 1.0);
-                }
-            `;
-
-            const uniforms = {
-                u_time: { value: 0.0 },
-                u_resolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) }
-            };
-
-            const material = new THREE.ShaderMaterial({
-                uniforms: uniforms,
-                vertexShader: vertexShader,
-                fragmentShader: fragmentShader,
-                transparent: true
-            });
-
-            const geometry = new THREE.PlaneGeometry(2, 2);
-            const mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
-
-            function animate() {
-                requestAnimationFrame(animate);
-                uniforms.u_time.value += 0.01;
-                renderer.render(scene, camera);
+            // Clock
+            const timeDisplay = document.getElementById('time-display');
+            if (timeDisplay) {
+                const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Bangkok' };
+                const formatter = new Intl.DateTimeFormat('en-US', options);
+                setInterval(() => { timeDisplay.textContent = formatter.format(new Date()) + ' ICT'; }, 1000);
             }
-            animate();
 
-            // Handle Resize
-            window.addEventListener('resize', () => {
-                const width = container.clientWidth;
-                const height = container.clientHeight;
-                renderer.setSize(width, height);
-                uniforms.u_resolution.value.set(width, height);
-            });
-        })();
+            // Currency Switcher
+            const currencyToggle = document.getElementById('currency-toggle');
+            if (currencyToggle) {
+                const currencyThumb = document.getElementById('currency-thumb');
+                const priceVals = document.querySelectorAll('.price-val');
+                const curThb = document.getElementById('cur-thb');
+                const curUsd = document.getElementById('cur-usd');
+                let isUsd = false;
+
+                currencyToggle.addEventListener('click', () => {
+                    isUsd = !isUsd;
+                    currencyThumb.style.left = isUsd ? '26px' : '4px';
+                    curThb.style.color = isUsd ? '#a3a3a3' : '#3b82f6';
+                    curUsd.style.color = isUsd ? '#a855f7' : '#a3a3a3';
+
+                    priceVals.forEach(p => {
+                        p.textContent = isUsd ? p.getAttribute('data-usd') : p.getAttribute('data-thb');
+                    });
+                });
+            }
+
+            // Render Archive
+            const containerList = document.getElementById("project-list");
+            if (containerList) {
+                containerList.innerHTML = projects.map(p => `
+                    <a href="${p.url}" target="_blank" data-image-url="${p.image}"
+                        class="project-card grid grid-cols-1 md:grid-cols-6 items-center gap-4 p-4 rounded-xl bg-surface border border-transparent hover:border-primary/20 hover:bg-surfaceHighlight transition-all group relative">
+                        <span class="text-white font-medium col-span-3">${p.name}</span>
+                        <span class="text-sm text-textMuted col-span-2">${p.role}</span>
+                        <span class="text-xs text-textMuted md:text-right col-span-1 flex md:justify-end gap-2">${p.tags}</span>
+                    </a>
+                `).join('');
+            }
+
+            // 4. Three.js First 3D Ocean Wave & Gradient Text Logic
+            (function initThreeJS() {
+                if (typeof THREE === 'undefined') {
+                    setTimeout(initThreeJS, 100);
+                    return;
+                }
+
+                const container = document.getElementById('hero-shader');
+                if (!container) return;
+
+                const scene = new THREE.Scene();
+
+                // Perspective camera with side angle
+                const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+                camera.position.set(0, 1.5, 3);
+                camera.lookAt(0, 0, 0);
+
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                container.appendChild(renderer.domElement);
+
+                // Smoothed geometry (256 instead of 128)
+                const geometry = new THREE.PlaneGeometry(15, 15, 256, 256);
+                geometry.rotateX(-Math.PI / 2);
+
+                const vertexShader = `
+                    uniform float u_time;
+                    uniform vec3 u_interact;
+                    varying float vElevation;
+
+                    void main() {
+                        vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+
+                        // Base rolling waves (large sine waves)
+                        float elevation = sin(modelPosition.x * 1.2 + u_time) * 0.15;
+                        elevation += sin(modelPosition.z * 1.5 - u_time * 0.8) * 0.15;
+                        
+                        // Cross waves for a more organic, chaotic water feel
+                        elevation += sin(modelPosition.x * 2.5 + modelPosition.z * 1.0 + u_time * 1.5) * 0.05;
+
+                        // Mouse Interaction: Create a physical ripple where the raycaster hits
+                        float dist = distance(modelPosition.xz, u_interact.xz);
+                        float ripple = sin(dist * -8.0 + u_time * 10.0) * exp(-dist * 2.5) * 0.3;
+                        
+                        // Apply ripple if the interact point is active
+                        if (length(u_interact) > 0.1) {
+                            elevation += ripple;
+                        }
+
+                        // Displace the Y axis based on our math
+                        modelPosition.y += elevation;
+                        
+                        // Pass the height to the fragment shader for coloring
+                        vElevation = elevation;
+
+                        gl_Position = projectionMatrix * viewMatrix * modelPosition;
+                    }
+                `;
+
+                const fragmentShader = `
+                    uniform vec3 u_depthColor;
+                    uniform vec3 u_surfaceColor;
+                    uniform vec3 u_accentColor;
+                    varying float vElevation;
+
+                    void main() {
+                        // Normalize elevation to roughly a 0.0 - 1.0 range
+                        float mixStrength = (vElevation + 0.25) * 2.0; 
+                        
+                        // Blend deep dark background and surface blue
+                        vec3 color = mix(u_depthColor, u_surfaceColor, clamp(mixStrength, 0.0, 1.0));
+                        
+                        // Add your brand's purple accent strictly to the highest wave peaks
+                        float accentStrength = smoothstep(0.8, 1.2, mixStrength);
+                        color = mix(color, u_accentColor, accentStrength);
+
+                        gl_FragColor = vec4(color, 1.0); 
+                    }
+                `;
+
+                const uniforms = {
+                    u_time: { value: 0.0 },
+                    u_interact: { value: new THREE.Vector3(0, 0, 0) },
+                    u_depthColor: { value: new THREE.Color('#0a0a0a') },
+                    u_surfaceColor: { value: new THREE.Color('#3b82f6') },
+                    u_accentColor: { value: new THREE.Color('#a855f7') }
+                };
+
+                const material = new THREE.ShaderMaterial({
+                    uniforms: uniforms,
+                    vertexShader: vertexShader,
+                    fragmentShader: fragmentShader,
+                    wireframe: false,
+                    transparent: true
+                });
+
+                const mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+
+                const raycaster = new THREE.Raycaster();
+
+                // Track mouse coordinates globally for BOTH Three.js and the Text Effect
+                const globalMouse = { x: -100, y: -100, clientX: -1000, clientY: -1000 };
+                let targetInteract = new THREE.Vector3(0, 0, 0);
+                let currentInteract = new THREE.Vector3(0, 0, 0);
+
+                window.addEventListener('mousemove', (e) => {
+                    globalMouse.clientX = e.clientX;
+                    globalMouse.clientY = e.clientY;
+                    globalMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                    globalMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+                }, { passive: true });
+
+                const waveWords = Array.from(document.querySelectorAll('.wave-word')).map(el => {
+                    return { element: el, rect: el.getBoundingClientRect() };
+                });
+
+                window.addEventListener('scroll', () => {
+                    waveWords.forEach(w => w.rect = w.element.getBoundingClientRect());
+                }, { passive: true });
+
+                const clock = new THREE.Clock();
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    const elapsedTime = clock.getElapsedTime();
+                    uniforms.u_time.value = elapsedTime;
+
+                    raycaster.setFromCamera(new THREE.Vector2(globalMouse.x, globalMouse.y), camera);
+                    const intersects = raycaster.intersectObject(mesh);
+
+                    if (intersects.length > 0) {
+                        targetInteract.copy(intersects[0].point);
+                    } else {
+                        targetInteract.set(0, 0, 0);
+                    }
+                    currentInteract.lerp(targetInteract, 0.05);
+                    uniforms.u_interact.value.copy(currentInteract);
+
+                    // Subtle camera sway
+                    camera.position.x = Math.sin(elapsedTime * 0.2) * 0.3;
+                    camera.position.z = 3 + Math.cos(elapsedTime * 0.2) * 0.1;
+                    camera.lookAt(0, 0, 0);
+
+                    // Text Gradient Hover Logic
+                    const radius = 180;
+                    waveWords.forEach(w => {
+                        const wordX = w.rect.left + w.rect.width / 2;
+                        const wordY = w.rect.top + w.rect.height / 2;
+
+                        const distX = globalMouse.clientX - wordX;
+                        const distY = globalMouse.clientY - wordY;
+                        const distance = Math.sqrt(distX * distX + distY * distY);
+
+                        if (distance < radius) {
+                            const force = Math.max(0, (radius - distance) / radius);
+
+                            const r1 = Math.round(237 - (237 - 59) * force);
+                            const g1 = Math.round(237 - (237 - 130) * force);
+                            const b1 = Math.round(237 - (237 - 246) * force);
+
+                            const r2 = Math.round(237 - (237 - 168) * force);
+                            const g2 = Math.round(237 - (237 - 85) * force);
+                            const b2 = Math.round(237 - (237 - 247) * force);
+
+                            w.element.style.backgroundImage = `linear-gradient(to right, rgb(${r1}, ${g1}, ${b1}), rgb(${r2}, ${g2}, ${b2}))`;
+                        } else {
+                            w.element.style.backgroundImage = `linear-gradient(to right, #ededed, #ededed)`;
+                        }
+                    });
+
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                // Handle Resizing
+                window.addEventListener('resize', () => {
+                    const width = container.clientWidth;
+                    const height = container.clientHeight;
+                    renderer.setSize(width, height);
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+                    waveWords.forEach(w => w.rect = w.element.getBoundingClientRect());
+                });
+            })();
+        });
     </script>
 </body>
 
