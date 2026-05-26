@@ -16,6 +16,8 @@
         content="https://res.cloudinary.com/dtwgigsce/image/upload/v1765507246/portfolio-website/og-image_1_grvgsu.png">
     <meta property="og:url" content="https://jadenttp.work/">
 
+    <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://res.cloudinary.com">
@@ -31,116 +33,6 @@
 
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        background: '#0a0a0a',
-                        surface: '#171717',
-                        surfaceHighlight: '#262626',
-                        primary: '#3b82f6',
-                        secondary: '#a855f7',
-                        textMain: '#ededed',
-                        textMuted: '#a3a3a3',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'marquee': 'marquee 25s linear infinite',
-                    },
-                    keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-100%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-        body {
-            background-color: #0a0a0a;
-            color: #ededed;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .glass-nav {
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #3b82f6, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .wave-word {
-            display: inline-block;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #ededed, #ededed);
-            transition: background-image 0.1s ease-out;
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
-        }
-
-        .project-preview {
-            transition: opacity 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            aspect-ratio: 16 / 10;
-        }
-
-        #hero-shader {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        .mask-gradient {
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #404040;
-        }
-    </style>
 </head>
 
 <body class="antialiased">
@@ -372,7 +264,7 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1764747939/portfolio-website/Honda-Thailand-%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%A9%E0%B8%B1%E0%B8%97-%E0%B8%AE%E0%B8%AD%E0%B8%99%E0%B8%94%E0%B9%89%E0%B8%B2-%E0%B8%AD%E0%B8%AD%E0%B9%82%E0%B8%95%E0%B9%82%E0%B8%A1%E0%B8%9A%E0%B8%B4%E0%B8%A5-%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2-%E0%B8%88%E0%B8%B3%E0%B8%81%E0%B8%B1%E0%B8%94-12-03-2025_10_57_AM_1_w98kmt.png"
-                            alt="" class="grayscale">
+                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Honda</h3>
@@ -390,7 +282,7 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1764747939/portfolio-website/Singha-The-Original-Thai-Beer-12-03-2025_11_37_AM_1_pwckio.png"
-                            alt="" class="grayscale">
+                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Singha</h3>
@@ -408,7 +300,7 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1764747939/portfolio-website/%E0%B9%81%E0%B8%A7%E0%B9%88%E0%B8%99%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B%E0%B9%80%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%8D-TOP-CHAROEN-12-03-2025_11_38_AM_1_lynmgx.png"
-                            alt="" class="grayscale">
+                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Topcharoen</h3>
@@ -425,7 +317,7 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1764747938/portfolio-website/VIDEO_Amazing-Thailand_Amazing-Deep-culture_1_s61gcz.jpg"
-                            alt="" class="grayscale">
+                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Amazing Thailand x HSH</h3>
@@ -443,7 +335,7 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1764747939/portfolio-website/CPN-Office-Leasing-12-03-2025_11_39_AM_1_ind8qz.png"
-                            alt="" class="grayscale">
+                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">CPN Office</h3>
@@ -969,25 +861,59 @@
         });
 
         // --- HOVER LOGIC (Event Delegation) ---
-        // This lives on the container, so it never "dies" when content changes
+        // --- HOVER LOGIC (Event Delegation with Viewport Bounds Fixing) ---
         container.addEventListener("mousemove", (e) => {
+            // 1. Safeguard: Exit immediately on touch/mobile devices to avoid layout jank
+            if (window.matchMedia('(pointer: coarse)').matches) return;
+
+            // Find the closest parent that matches the project row
             const card = e.target.closest(".project-card");
 
             if (card) {
                 const imgUrl = card.getAttribute("data-image-url");
 
-                // Update Preview content
-                previewImg.src = imgUrl;
-                previewEl.style.opacity = "1";
+                // 2. Performance: Only update source if it actually changed
+                if (previewImg.src !== imgUrl) {
+                    previewImg.src = imgUrl;
+                }
 
-                // Make preview follow mouse
-                previewEl.style.left = (e.clientX + 20) + "px";
-                previewEl.style.top = (e.clientY + 20) + "px";
+                // Show the preview window
+                previewEl.style.opacity = "1";
+                previewEl.style.visibility = "visible";
+
+                // 3. Bound Detection Math
+                // Based on your CSS specs: w-64 is 256px, h-40 is 160px
+                const previewWidth = 256;
+                const previewHeight = 160;
+                const offset = 20; // Pixel buffer spacing around cursor
+
+                let leftPos = e.clientX + offset;
+                let topPos = e.clientY + offset;
+
+                // Collision Check: Right wall overflow (Flip preview box to the left side)
+                if (leftPos + previewWidth > window.innerWidth) {
+                    leftPos = e.clientX - previewWidth - offset;
+                }
+
+                // Collision Check: Bottom wall overflow (Flip preview box to the upper side)
+                if (topPos + previewHeight > window.innerHeight) {
+                    topPos = e.clientY - previewHeight - offset;
+                }
+
+                // 4. Update coordinates cleanly using template strings
+                previewEl.style.left = `${leftPos}px`;
+                previewEl.style.top = `${topPos}px`;
+            } else {
+                // Hide preview dynamically if hovering whitespace between the rows
+                previewEl.style.opacity = "0";
+                previewEl.style.visibility = "hidden";
             }
         });
 
+        // Completely hide preview container when tracking leaves the archive element entirely
         container.addEventListener("mouseleave", () => {
             previewEl.style.opacity = "0";
+            previewEl.style.visibility = "hidden";
         });
 
         // Initial Start
@@ -1165,8 +1091,16 @@
 
                 const clock = new THREE.Clock();
 
+                let isVisible = true;
+                const observer = new IntersectionObserver((entries) => {
+                    isVisible = entries[0].isIntersecting;
+                });
+                observer.observe(container);
+
                 function animate() {
                     requestAnimationFrame(animate);
+                    if (!isVisible) return;
+
                     const elapsedTime = clock.getElapsedTime();
                     uniforms.u_time.value = elapsedTime;
 
