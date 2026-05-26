@@ -264,7 +264,8 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1779786909/Honda-Thailand-%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%A9%E0%B8%B1%E0%B8%97-%E0%B8%AE%E0%B8%AD%E0%B8%99%E0%B8%94%E0%B9%89%E0%B8%B2-%E0%B8%AD%E0%B8%AD%E0%B9%82%E0%B8%95%E0%B9%82%E0%B8%A1%E0%B8%9A%E0%B8%B4%E0%B8%A5-%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2-%E0%B8%88%E0%B8%B3%E0%B8%81%E0%B8%B1%E0%B8%94-12-03-2025_10_57_AM_1_w98kmt_tmw7hv.webp"
-                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
+                            alt=""
+                            class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Honda</h3>
@@ -282,7 +283,8 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1779786909/Singha-The-Original-Thai-Beer-12-03-2025_11_37_AM_1_pwckio_yrqnkd.webp"
-                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
+                            alt=""
+                            class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Singha</h3>
@@ -300,7 +302,8 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1779786909/%E0%B9%81%E0%B8%A7%E0%B9%88%E0%B8%99%E0%B8%97%E0%B9%87%E0%B8%AD%E0%B8%9B%E0%B9%80%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%8D-TOP-CHAROEN-12-03-2025_11_38_AM_1_lynmgx_okiubv.webp"
-                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
+                            alt=""
+                            class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Topcharoen</h3>
@@ -317,7 +320,8 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1779786908/VIDEO_Amazing-Thailand_Amazing-Deep-culture_1_s61gcz_dbs1hg.webp"
-                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
+                            alt=""
+                            class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Amazing Thailand x HSH</h3>
@@ -335,7 +339,8 @@
                         class="relative h-48 bg-gradient-to-br from-green-900/40 to-green-800/20 flex items-start justify-center overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-10"></div>
                         <img src="https://res.cloudinary.com/dtwgigsce/image/upload/v1779786909/CPN-Office-Leasing-12-03-2025_11_39_AM_1_ind8qz_ovurfl.webp"
-                            alt="" class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
+                            alt=""
+                            class="grayscale transition-transform duration-500 group-hover:scale-105 h-full w-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">CPN Office</h3>
@@ -989,8 +994,9 @@
                 renderer.setSize(container.clientWidth, container.clientHeight);
                 container.appendChild(renderer.domElement);
 
-                // Smoothed geometry (256 instead of 128)
-                const geometry = new THREE.PlaneGeometry(15, 15, 256, 256);
+                const isMobile = window.innerWidth < 768;
+                const segments = isMobile ? 64 : 128; // Drop to 64 segments on mobile, 128 is plenty for desktop
+                const geometry = new THREE.PlaneGeometry(15, 15, segments, segments);
                 geometry.rotateX(-Math.PI / 2);
 
                 const vertexShader = `
@@ -1074,11 +1080,47 @@
                 let targetInteract = new THREE.Vector3(0, 0, 0);
                 let currentInteract = new THREE.Vector3(0, 0, 0);
 
+                let toneTimeout;
                 window.addEventListener('mousemove', (e) => {
                     globalMouse.clientX = e.clientX;
                     globalMouse.clientY = e.clientY;
                     globalMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
                     globalMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+                    // Throttle slightly to save mobile CPU cycles
+                    if (toneTimeout) cancelAnimationFrame(toneTimeout);
+
+                    toneTimeout = requestAnimationFrame(() => {
+                        const radius = 180;
+
+                        waveWords.forEach(w => {
+                            const wordX = w.rect.left + w.rect.width / 2;
+                            const wordY = w.rect.top + w.rect.height / 2;
+
+                            const distX = e.clientX - wordX;
+                            const distY = e.clientY - wordY;
+                            const distance = Math.sqrt(distX * distX + distY * distY);
+
+                            if (distance < radius) {
+                                const force = Math.max(0, (radius - distance) / radius);
+
+                                const r1 = Math.round(237 - (237 - 59) * force);
+                                const g1 = Math.round(237 - (237 - 130) * force);
+                                const b1 = Math.round(237 - (237 - 246) * force);
+
+                                const r2 = Math.round(237 - (237 - 168) * force);
+                                const g2 = Math.round(237 - (237 - 85) * force);
+                                const b2 = Math.round(237 - (237 - 247) * force);
+
+                                w.element.style.backgroundImage = `linear-gradient(to right, rgb(${r1}, ${g1}, ${b1}), rgb(${r2}, ${g2}, ${b2}))`;
+                            } else {
+                                // Only reset if it's not already default to prevent unnecessary DOM writes
+                                if (w.element.style.backgroundImage !== 'linear-gradient(to right, rgb(237, 237, 237), rgb(237, 237, 237))') {
+                                    w.element.style.backgroundImage = `linear-gradient(to right, #ededed, #ededed)`;
+                                }
+                            }
+                        });
+                    });
                 }, { passive: true });
 
                 const waveWords = Array.from(document.querySelectorAll('.wave-word')).map(el => {
@@ -1119,33 +1161,6 @@
                     camera.position.x = Math.sin(elapsedTime * 0.2) * 0.3;
                     camera.position.z = 3 + Math.cos(elapsedTime * 0.2) * 0.1;
                     camera.lookAt(0, 0, 0);
-
-                    // Text Gradient Hover Logic
-                    const radius = 180;
-                    waveWords.forEach(w => {
-                        const wordX = w.rect.left + w.rect.width / 2;
-                        const wordY = w.rect.top + w.rect.height / 2;
-
-                        const distX = globalMouse.clientX - wordX;
-                        const distY = globalMouse.clientY - wordY;
-                        const distance = Math.sqrt(distX * distX + distY * distY);
-
-                        if (distance < radius) {
-                            const force = Math.max(0, (radius - distance) / radius);
-
-                            const r1 = Math.round(237 - (237 - 59) * force);
-                            const g1 = Math.round(237 - (237 - 130) * force);
-                            const b1 = Math.round(237 - (237 - 246) * force);
-
-                            const r2 = Math.round(237 - (237 - 168) * force);
-                            const g2 = Math.round(237 - (237 - 85) * force);
-                            const b2 = Math.round(237 - (237 - 247) * force);
-
-                            w.element.style.backgroundImage = `linear-gradient(to right, rgb(${r1}, ${g1}, ${b1}), rgb(${r2}, ${g2}, ${b2}))`;
-                        } else {
-                            w.element.style.backgroundImage = `linear-gradient(to right, #ededed, #ededed)`;
-                        }
-                    });
 
                     renderer.render(scene, camera);
                 }
