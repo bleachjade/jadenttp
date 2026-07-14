@@ -1186,6 +1186,82 @@
             })();
         });
     </script>
+    <!-- WebMCP Agent Integration -->
+    <script>
+        if ('modelContext' in navigator) {
+            navigator.modelContext.provideContext({
+                tools: [
+                    {
+                        name: "get_portfolio_projects",
+                        description: "Retrieve a list of past web development projects and clients.",
+                        inputSchema: {
+                            type: "object",
+                            properties: {
+                                filter: {
+                                    type: "string",
+                                    description: "Optional category filter (e.g., 'Frontend', 'WordPress', 'E-commerce', 'Lead'). Omit or pass 'all' for all projects."
+                                }
+                            }
+                        },
+                        execute: async (args) => {
+                            let data = projects; // References the 'projects' array defined in your previous script
+                            if (args.filter && args.filter.toLowerCase() !== 'all') {
+                                data = projects.filter(p =>
+                                    p.role.includes(args.filter) ||
+                                    p.tags.includes(args.filter)
+                                );
+                            }
+                            // Return a simplified array to the agent
+                            return {
+                                result: JSON.stringify(data.map(p => ({
+                                    client: p.name,
+                                    role: p.role,
+                                    tags: p.tags,
+                                    url: p.url
+                                })))
+                            };
+                        }
+                    },
+                    {
+                        name: "get_pricing",
+                        description: "Retrieve pricing plans for web development services.",
+                        inputSchema: {
+                            type: "object",
+                            properties: {}
+                        },
+                        execute: async () => {
+                            return {
+                                result: JSON.stringify([
+                                    { plan: "Basic Plan", thb: "฿15,000", usd: "$490", features: ["Single-page website", "Responsive Design", "1 Month Maintenance"] },
+                                    { plan: "Standard Plan", thb: "฿30,000", usd: "$990", features: ["Up to 5 pages", "Basic SEO Optimization", "6 Months Maintenance"] },
+                                    { plan: "Premium Plan", thb: "฿80,000", usd: "$2,590", features: ["Multi-page (10+)", "Advanced SEO", "1 Year Support"] },
+                                    { plan: "Custom Plan", thb: "Custom", usd: "Custom", features: ["Custom App Development", "Ongoing Retainer Service"] }
+                                ])
+                            };
+                        }
+                    },
+                    {
+                        name: "get_contact_info",
+                        description: "Retrieve contact and booking information to start a web development project.",
+                        inputSchema: {
+                            type: "object",
+                            properties: {}
+                        },
+                        execute: async () => {
+                            return {
+                                result: JSON.stringify({
+                                    email: "nattapolboonyapornpong@gmail.com",
+                                    booking_url: "https://calendly.com/nattapolboonyapornpong/30min?a1=5",
+                                    linkedin: "https://th.linkedin.com/in/jadenttp",
+                                    github: "https://github.com/bleachjade"
+                                })
+                            };
+                        }
+                    }
+                ]
+            });
+        }
+    </script>
 </body>
 
 </html>
